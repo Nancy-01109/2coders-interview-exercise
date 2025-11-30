@@ -4,9 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.interview_exercise_2coders.ui.routes.MovieDetailsRoute
 import com.example.interview_exercise_2coders.ui.routes.MovieListRoute
 import com.example.interview_exercise_2coders.view_model.MoviesViewModel
 
@@ -26,12 +29,12 @@ fun MoviesNavHost(
             MovieListRoute(navController = navController, viewModel = projectsViewModel)
         }
 
-//        composable(
-//            route = NavigationRoutes.MovieDetail.route,
-//            arguments = listOf(navArgument("movieId") { type = NavType.LongType })
-//        ) { backStackEntry ->
-//            val projectId = backStackEntry.arguments?.getLong("movieId") ?: 0L
-//            MovieDetailsRoute(projectId = projectId, viewModel = projectsViewModel)
-//        }
+        composable(
+            route = NavigationRoutes.MovieDetail.route,
+            arguments = listOf(navArgument("movieId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val movieId = backStackEntry.arguments?.getInt("movieId") ?: 0
+            MovieDetailsRoute(movieId = movieId, viewModel = projectsViewModel)
+        }
     }
 }

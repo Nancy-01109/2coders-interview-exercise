@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.interview_exercise_2coders.navigation.NavigationRoutes
 import com.example.interview_exercise_2coders.ui.component.MovieItem
 import com.example.interview_exercise_2coders.view_model.MoviesViewModel
 
@@ -46,7 +47,13 @@ fun MovieListRoute(
                 movie?.let {
                     MovieItem(
                         movie = it,
-                        onClick = {},
+                        onClick = {
+                            navController.navigate(
+                                NavigationRoutes.MovieDetail.createRoute(
+                                    it.id
+                                )
+                            )
+                        },
                         index = index,
                     )
                 }
