@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.interview_exercise_2coders.data.local.dao.FavoriteMovieDao
 import com.example.interview_exercise_2coders.data.local.database.AppDatabase
+import com.example.interview_exercise_2coders.data.local.database.migrations.MIGRATION_2_3
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +23,7 @@ object DatabaseModule {
             context,
             AppDatabase::class.java,
             "app_database"
-        ).build()
+        ).addMigrations(MIGRATION_2_3).build()
     }
 
     @Provides
