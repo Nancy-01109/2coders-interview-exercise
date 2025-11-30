@@ -3,11 +3,13 @@ package com.example.interview_exercise_2coders.ui.routes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -37,48 +39,61 @@ fun MovieListRoute(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.primary)
     ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            items(movieChanges.itemCount) { index ->
-                val movie = movieChanges[index]
-                movie?.let {
-                    MovieItem(
-                        movie = it,
-                        onClick = {
-                            navController.navigate(
-                                NavigationRoutes.MovieDetail.createRoute(
-                                    it.id
+        Column(modifier = Modifier.fillMaxSize()) {
+            Button(
+                onClick = {
+                    navController.navigate(NavigationRoutes.SearchRoute.route)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 5.dp)
+            ) {
+                Text("Search")
+            }
+
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(horizontal = 4.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(movieChanges.itemCount) { index ->
+                    val movie = movieChanges[index]
+                    movie?.let {
+                        MovieItem(
+                            movie = it,
+                            onClick = {
+                                navController.navigate(
+                                    NavigationRoutes.MovieDetail.createRoute(
+                                        it.id
+                                    )
                                 )
-                            )
-                        },
-                        index = index,
-                    )
+                            },
+                            index = index,
+                        )
+                    }
                 }
-            }
 
-            item {
-                if (movieChanges.loadState.append is LoadState.Loading) {
-                    CircularProgressIndicator(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
-                    )
+                item {
+                    if (movieChanges.loadState.append is LoadState.Loading) {
+                        CircularProgressIndicator(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp)
+                        )
+                    }
                 }
-            }
 
-            item {
-                val appendState = movieChanges.loadState.append
-                if (appendState is LoadState.Error) {
-                    Text(
-                        text = "Error: ${appendState.error.localizedMessage}",
-                        color = Color.Red,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
-                    )
+                item {
+                    val appendState = movieChanges.loadState.append
+                    if (appendState is LoadState.Error) {
+                        Text(
+                            text = "Error: ${appendState.error.localizedMessage}",
+                            color = Color.Red,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp)
+                        )
+                    }
                 }
             }
         }

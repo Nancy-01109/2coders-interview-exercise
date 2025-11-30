@@ -1,0 +1,31 @@
+package com.example.interview_exercise_2coders.core
+
+import android.content.Context
+import androidx.room.Room
+import com.example.interview_exercise_2coders.data.local.dao.FavoriteMovieDao
+import com.example.interview_exercise_2coders.data.local.database.AppDatabase
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+object DatabaseModule {
+
+    @Provides
+    @Singleton
+    fun provideDatabase(context: Context): AppDatabase {
+        return Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            "app_database"
+        ).build()
+    }
+
+    @Provides
+    fun provideFavoriteMovieDao(db: AppDatabase): FavoriteMovieDao {
+        return db.favoriteMovieDao()
+    }
+}

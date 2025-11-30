@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.interview_exercise_2coders.ui.routes.MovieDetailsRoute
 import com.example.interview_exercise_2coders.ui.routes.MovieListRoute
+import com.example.interview_exercise_2coders.ui.routes.SearchRoute
 import com.example.interview_exercise_2coders.view_model.MoviesViewModel
 
 @Composable
@@ -27,6 +28,10 @@ fun MoviesNavHost(
     ) {
         composable(NavigationRoutes.MovieList.route) {
             MovieListRoute(navController = navController, viewModel = projectsViewModel)
+        }
+
+        composable(NavigationRoutes.SearchRoute.route) {
+            SearchRoute(navController = navController, viewModel = projectsViewModel)
         }
 
         composable(
