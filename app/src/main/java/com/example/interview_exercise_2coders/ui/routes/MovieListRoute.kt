@@ -15,10 +15,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -33,6 +35,7 @@ fun MovieListRoute(
     navController: NavController
 ) {
     val movieChanges = viewModel.movies.collectAsLazyPagingItems()
+    val favoriteIds by viewModel.favoriteIds.collectAsStateWithLifecycle()
 
     Box(
         modifier = Modifier
@@ -68,7 +71,8 @@ fun MovieListRoute(
                                     )
                                 )
                             },
-                            index = index,
+                            isFavorite = favoriteIds.contains(it.id),
+                            onToggleFavorite = { viewModel.toggleFavorite(it) },
                         )
                     }
                 }

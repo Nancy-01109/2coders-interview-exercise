@@ -79,5 +79,18 @@ fun SearchTvDto.toDomain() = SearchTvShowDomain(
     voteCount = voteCount
 )
 
+fun MovieDetailsDomain.toMovieDomain(): MovieDomain {
+    return MovieDomain(
+        id = this.id,
+        title = this.title,
+        overview = this.overview,
+        posterUrl = this.posterUrl,
+        backdropUrl = this.backdropUrl,
+        voteAverage = this.rating,
+        releaseDate = this.releaseDate
+    )
+}
+
+
 
 

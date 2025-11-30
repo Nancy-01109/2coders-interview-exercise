@@ -1,4 +1,4 @@
-package com.example.interview_exercise_2coders.data.repository
+package com.example.interview_exercise_2coders.data.repository.impl
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -7,6 +7,7 @@ import com.example.interview_exercise_2coders.data.MovieService
 import com.example.interview_exercise_2coders.data.data_source.MoviePagingDataSource
 import com.example.interview_exercise_2coders.data.data_source.SearchPagingDataSource
 import com.example.interview_exercise_2coders.data.mappers.toDomain
+import com.example.interview_exercise_2coders.data.repository.MovieRepository
 import com.example.interview_exercise_2coders.domain.MediaType
 import com.example.interview_exercise_2coders.domain.MovieDetailsDomain
 import com.example.interview_exercise_2coders.domain.MovieDomain

@@ -6,13 +6,19 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,7 +37,12 @@ import com.example.interview_exercise_2coders.domain.MovieDomain
 import com.example.interview_exercise_2coders.ui.helper.ImageHelper
 
 @Composable
-fun MovieItem(movie: MovieDomain, onClick: () -> Unit, index: Int) {
+fun MovieItem(
+    movie: MovieDomain,
+    onClick: () -> Unit,
+    isFavorite: Boolean,
+    onToggleFavorite: () -> Unit,
+) {
     val interactionSource = remember { MutableInteractionSource() }
 
     Card(
@@ -41,45 +52,62 @@ fun MovieItem(movie: MovieDomain, onClick: () -> Unit, index: Int) {
             .clickable(
                 interactionSource = interactionSource,
                 indication = LocalIndication.current
-            ) {
-                onClick()
-            },
+            ) { onClick() },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
     ) {
-
-        Column(
+        Row(
             modifier = Modifier
                 .padding(16.dp)
                 .fillMaxWidth(),
-            horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.Center
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            movie.posterUrl?.let { url ->
-                val posterUrl = ImageHelper.getPosterUrl(url)
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.Start,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    movie.posterUrl?.let { url ->
+                        val posterUrl = ImageHelper.getPosterUrl(url)
 
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(posterUrl)
-                        .crossfade(true)
-                        .build(),
-                    contentDescription = "${movie.title} avatar",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(50.dp)
-                        .clip(CircleShape)
-                        .border(2.dp, MaterialTheme.colorScheme.secondary, CircleShape)
-                )
-            }
-            Text(
-                text = movie.title,
-                fontStyle = MaterialTheme.typography.bodySmall.fontStyle,
-            )
-            movie.overview?.let {
+                        AsyncImage(
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data(posterUrl)
+                                .crossfade(true)
+                                .build(),
+                            contentDescription = "${movie.title} poster",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .size(50.dp)
+                                .clip(CircleShape)
+                                .border(2.dp, MaterialTheme.colorScheme.secondary, CircleShape)
+                        )
+                    }
+                    IconButton(onClick = onToggleFavorite) {
+                        Icon(
+                            imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+                            contentDescription = "Favorite",
+                            tint = if (isFavorite) Color.Red else Color.Gray
+                        )
+                    }
+                }
+
                 Text(
-                    text = it,
+                    text = movie.title,
                     fontStyle = MaterialTheme.typography.bodySmall.fontStyle,
                 )
+
+                movie.overview?.let {
+                    Text(
+                        text = it,
+                        fontStyle = MaterialTheme.typography.bodySmall.fontStyle,
+                    )
+                }
             }
         }
     }
