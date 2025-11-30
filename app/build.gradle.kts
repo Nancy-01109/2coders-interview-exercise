@@ -1,10 +1,22 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
-    kotlin("plugin.serialization") version "1.9.0"
+    kotlin("plugin.serialization") version "1.9.25"
 }
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(FileInputStream(localPropertiesFile))
+}
+
+val tmdbApiKey = localProperties.getProperty("TMDB_API_KEY")?.toString()
+    ?: throw GradleException("TMDB_API_KEY not found in local.properties")
 
 android {
     namespace = "com.example.interview_exercise_2coders"
@@ -17,8 +29,8 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
         vectorDrawables.useSupportLibrary = true
+        buildConfigField("String", "TMDB_API_KEY", "\"$tmdbApiKey\"")
     }
 
     buildTypes {
@@ -42,6 +54,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     composeOptions {
@@ -54,6 +67,15 @@ android {
         }
     }
 }
+
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.jetbrains.kotlinx" && requested.name.startsWith("kotlinx-serialization")) {
+            useVersion("1.6.3") // force compatible version
+        }
+    }
+}
+
 
 hilt {
     enableAggregatingTask = false
@@ -109,5 +131,10 @@ dependencies {
     // Debug
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Paging
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
+
 }
 
