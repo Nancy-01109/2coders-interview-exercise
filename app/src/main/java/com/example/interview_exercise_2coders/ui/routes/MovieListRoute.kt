@@ -28,7 +28,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.interview_exercise_2coders.R
 import com.example.interview_exercise_2coders.navigation.NavigationRoutes
 import com.example.interview_exercise_2coders.ui.component.MovieItem
-import com.example.interview_exercise_2coders.ui.view_model.MoviesViewModel
+import com.example.interview_exercise_2coders.view_model.MoviesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

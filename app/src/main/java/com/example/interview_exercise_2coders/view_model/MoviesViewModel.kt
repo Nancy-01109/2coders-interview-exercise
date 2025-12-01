@@ -1,4 +1,4 @@
-package com.example.interview_exercise_2coders.ui.view_model
+package com.example.interview_exercise_2coders.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

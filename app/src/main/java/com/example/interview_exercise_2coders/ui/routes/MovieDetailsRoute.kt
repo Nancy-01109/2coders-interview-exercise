@@ -42,8 +42,8 @@ import com.example.interview_exercise_2coders.data.mappers.toMovieDomain
 import com.example.interview_exercise_2coders.ui.component.LabelWithList
 import com.example.interview_exercise_2coders.ui.component.TwoElementRow
 import com.example.interview_exercise_2coders.ui.helper.ImageHelper
-import com.example.interview_exercise_2coders.ui.view_model.MovieDetailsState
-import com.example.interview_exercise_2coders.ui.view_model.MoviesViewModel
+import com.example.interview_exercise_2coders.view_model.MovieDetailsState
+import com.example.interview_exercise_2coders.view_model.MoviesViewModel
 
 // I should have used previews, i was more focused on functionality
 // the design needs improvements, like theme , typography
