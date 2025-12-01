@@ -12,7 +12,7 @@ import androidx.navigation.navArgument
 import com.example.interview_exercise_2coders.ui.routes.MovieDetailsRoute
 import com.example.interview_exercise_2coders.ui.routes.MovieListRoute
 import com.example.interview_exercise_2coders.ui.routes.SearchRoute
-import com.example.interview_exercise_2coders.view_model.MoviesViewModel
+import com.example.interview_exercise_2coders.ui.view_model.MoviesViewModel
 
 @Composable
 fun MoviesNavHost(

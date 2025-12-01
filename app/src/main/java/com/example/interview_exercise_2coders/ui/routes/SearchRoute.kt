@@ -26,9 +26,9 @@ import androidx.navigation.NavController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.interview_exercise_2coders.domain.MediaType
-import com.example.interview_exercise_2coders.domain.SearchItem
+import com.example.interview_exercise_2coders.domain.search.SearchItem
 import com.example.interview_exercise_2coders.ui.component.SearchElement
-import com.example.interview_exercise_2coders.view_model.MoviesViewModel
+import com.example.interview_exercise_2coders.ui.view_model.MoviesViewModel
 
 @Composable
 fun SearchRoute(

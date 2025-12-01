@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.paging.PagingData
 import app.cash.turbine.test
 import com.example.interview_exercise_2coders.core.util.isNetworkAvailable
-import com.example.interview_exercise_2coders.data.MovieService
+import com.example.interview_exercise_2coders.data.service.MovieService
 import com.example.interview_exercise_2coders.data.dto.MovieDetailsResponse
 import com.example.interview_exercise_2coders.data.local.dao.CachedMovieDao
 import com.example.interview_exercise_2coders.data.local.dao.RemoteKeysDao

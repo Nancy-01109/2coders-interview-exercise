@@ -7,7 +7,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.example.interview_exercise_2coders.core.util.isNetworkAvailable
-import com.example.interview_exercise_2coders.data.MovieService
+import com.example.interview_exercise_2coders.data.service.MovieService
 import com.example.interview_exercise_2coders.data.data_source.MovieRemoteMediator
 import com.example.interview_exercise_2coders.data.data_source.SearchPagingDataSource
 import com.example.interview_exercise_2coders.data.local.database.AppDatabase
@@ -19,7 +19,7 @@ import com.example.interview_exercise_2coders.data.repository.MovieRepository
 import com.example.interview_exercise_2coders.domain.MediaType
 import com.example.interview_exercise_2coders.domain.MovieDetailsDomain
 import com.example.interview_exercise_2coders.domain.MovieDomain
-import com.example.interview_exercise_2coders.domain.SearchItem
+import com.example.interview_exercise_2coders.domain.search.SearchItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

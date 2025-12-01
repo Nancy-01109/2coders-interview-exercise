@@ -40,8 +40,8 @@ import coil3.request.crossfade
 import com.example.interview_exercise_2coders.R
 import com.example.interview_exercise_2coders.data.mappers.toMovieDomain
 import com.example.interview_exercise_2coders.ui.helper.ImageHelper
-import com.example.interview_exercise_2coders.view_model.MovieDetailsState
-import com.example.interview_exercise_2coders.view_model.MoviesViewModel
+import com.example.interview_exercise_2coders.ui.view_model.MovieDetailsState
+import com.example.interview_exercise_2coders.ui.view_model.MoviesViewModel
 
 @Composable
 fun MovieDetailsRoute(

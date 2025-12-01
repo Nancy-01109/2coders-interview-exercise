@@ -1,4 +1,4 @@
-package com.example.interview_exercise_2coders.view_model
+package com.example.interview_exercise_2coders.ui.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +10,7 @@ import com.example.interview_exercise_2coders.data.repository.MovieRepository
 import com.example.interview_exercise_2coders.domain.MediaType
 import com.example.interview_exercise_2coders.domain.MovieDetailsDomain
 import com.example.interview_exercise_2coders.domain.MovieDomain
-import com.example.interview_exercise_2coders.domain.SearchItem
+import com.example.interview_exercise_2coders.domain.search.SearchItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

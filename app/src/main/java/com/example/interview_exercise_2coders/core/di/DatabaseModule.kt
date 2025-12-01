@@ -1,4 +1,4 @@
-package com.example.interview_exercise_2coders.core
+package com.example.interview_exercise_2coders.core.di
 
 import android.content.Context
 import androidx.room.Room

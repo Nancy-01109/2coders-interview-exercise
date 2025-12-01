@@ -18,15 +18,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.interview_exercise_2coders.R
 import com.example.interview_exercise_2coders.navigation.NavigationRoutes
 import com.example.interview_exercise_2coders.ui.component.MovieItem
-import com.example.interview_exercise_2coders.view_model.MoviesViewModel
+import com.example.interview_exercise_2coders.ui.view_model.MoviesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -51,7 +53,7 @@ fun MovieListRoute(
                     .fillMaxWidth()
                     .padding(vertical = 5.dp)
             ) {
-                Text("Search")
+                Text(stringResource(R.string.search))
             }
 
             LazyColumn(

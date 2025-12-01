@@ -1,7 +1,7 @@
-package com.example.interview_exercise_2coders.core
+package com.example.interview_exercise_2coders.core.di
 import com.example.interview_exercise_2coders.BuildConfig
 import com.example.interview_exercise_2coders.core.util.CurlLoggingInterceptor
-import com.example.interview_exercise_2coders.data.MovieService
+import com.example.interview_exercise_2coders.data.service.MovieService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides

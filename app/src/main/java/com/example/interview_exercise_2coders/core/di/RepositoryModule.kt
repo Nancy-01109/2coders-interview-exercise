@@ -1,7 +1,7 @@
-package com.example.interview_exercise_2coders.core
+package com.example.interview_exercise_2coders.core.di
 
 import android.content.Context
-import com.example.interview_exercise_2coders.data.MovieService
+import com.example.interview_exercise_2coders.data.service.MovieService
 import com.example.interview_exercise_2coders.data.local.dao.FavoriteMovieDao
 import com.example.interview_exercise_2coders.data.local.database.AppDatabase
 import com.example.interview_exercise_2coders.data.repository.FavoriteMovieRepository

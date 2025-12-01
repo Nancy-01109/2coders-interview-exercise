@@ -4,7 +4,7 @@ import androidx.paging.PagingData
 import com.example.interview_exercise_2coders.domain.MediaType
 import com.example.interview_exercise_2coders.domain.MovieDetailsDomain
 import com.example.interview_exercise_2coders.domain.MovieDomain
-import com.example.interview_exercise_2coders.domain.SearchItem
+import com.example.interview_exercise_2coders.domain.search.SearchItem
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {

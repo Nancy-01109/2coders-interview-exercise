@@ -1,4 +1,4 @@
-package com.example.interview_exercise_2coders.domain
+package com.example.interview_exercise_2coders.domain.search
 
 data class SearchMovieDomain(
     override val id: Int,

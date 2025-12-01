@@ -1,4 +1,4 @@
-package com.example.interview_exercise_2coders.data
+package com.example.interview_exercise_2coders.data.service
 
 import com.example.interview_exercise_2coders.data.dto.MovieDetailsResponse
 import com.example.interview_exercise_2coders.data.dto.MoviePage

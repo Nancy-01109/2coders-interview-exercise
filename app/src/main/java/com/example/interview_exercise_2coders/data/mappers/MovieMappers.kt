@@ -8,8 +8,8 @@ import com.example.interview_exercise_2coders.data.local.entity.CachedMovieEntit
 import com.example.interview_exercise_2coders.data.local.entity.FavoriteMovieEntity
 import com.example.interview_exercise_2coders.domain.MovieDetailsDomain
 import com.example.interview_exercise_2coders.domain.MovieDomain
-import com.example.interview_exercise_2coders.domain.SearchMovieDomain
-import com.example.interview_exercise_2coders.domain.SearchTvShowDomain
+import com.example.interview_exercise_2coders.domain.search.SearchMovieDomain
+import com.example.interview_exercise_2coders.domain.search.SearchTvShowDomain
 
 //This can also be split into multiple files for cleaner code
 fun MovieDetailsResponse.toDomain(): MovieDetailsDomain {

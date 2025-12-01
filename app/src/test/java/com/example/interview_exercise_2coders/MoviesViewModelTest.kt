@@ -8,8 +8,8 @@ import com.example.interview_exercise_2coders.data.repository.MovieRepository
 import com.example.interview_exercise_2coders.domain.MediaType
 import com.example.interview_exercise_2coders.domain.MovieDetailsDomain
 import com.example.interview_exercise_2coders.domain.MovieDomain
-import com.example.interview_exercise_2coders.view_model.MovieDetailsState
-import com.example.interview_exercise_2coders.view_model.MoviesViewModel
+import com.example.interview_exercise_2coders.ui.view_model.MovieDetailsState
+import com.example.interview_exercise_2coders.ui.view_model.MoviesViewModel
 import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.coVerify

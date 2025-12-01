@@ -1,4 +1,4 @@
-package com.example.interview_exercise_2coders.domain
+package com.example.interview_exercise_2coders.domain.search
 
 sealed interface SearchItem {
     val id: Int

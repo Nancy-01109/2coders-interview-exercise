@@ -2,10 +2,10 @@ package com.example.interview_exercise_2coders.data.data_source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.interview_exercise_2coders.data.MovieService
+import com.example.interview_exercise_2coders.data.service.MovieService
 import com.example.interview_exercise_2coders.data.mappers.toDomain
 import com.example.interview_exercise_2coders.domain.MediaType
-import com.example.interview_exercise_2coders.domain.SearchItem
+import com.example.interview_exercise_2coders.domain.search.SearchItem
 
 class SearchPagingDataSource(
     private val service: MovieService,

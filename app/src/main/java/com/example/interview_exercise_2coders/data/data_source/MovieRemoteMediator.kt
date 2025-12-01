@@ -5,7 +5,7 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.example.interview_exercise_2coders.data.MovieService
+import com.example.interview_exercise_2coders.data.service.MovieService
 import com.example.interview_exercise_2coders.data.local.database.AppDatabase
 import com.example.interview_exercise_2coders.data.local.entity.CachedMovieEntity
 import com.example.interview_exercise_2coders.data.local.entity.RemoteKeysEntity
