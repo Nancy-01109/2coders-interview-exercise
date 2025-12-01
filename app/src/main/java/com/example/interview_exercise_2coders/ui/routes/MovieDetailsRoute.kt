@@ -39,10 +39,14 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.interview_exercise_2coders.R
 import com.example.interview_exercise_2coders.data.mappers.toMovieDomain
+import com.example.interview_exercise_2coders.ui.component.LabelWithList
+import com.example.interview_exercise_2coders.ui.component.TwoElementRow
 import com.example.interview_exercise_2coders.ui.helper.ImageHelper
 import com.example.interview_exercise_2coders.ui.view_model.MovieDetailsState
 import com.example.interview_exercise_2coders.ui.view_model.MoviesViewModel
 
+// I should have used previews, i was more focused on functionality
+// the design needs improvements, like theme , typography
 @Composable
 fun MovieDetailsRoute(
     movieId: Int,
@@ -105,17 +109,31 @@ fun MovieDetailsRoute(
 
                 }
                 Text(text = movie.title, style = MaterialTheme.typography.titleLarge)
+
                 movie.tagline?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
+
                 Spacer(modifier = Modifier.height(8.dp))
+
                 movie.overview?.let { Text(it) }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(stringResource(R.string.ratings))
-                    movie.rating?.let { Text(it.toString()) }
-                }
-                movie.productionCompanies.forEach { Text(it) }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                TwoElementRow(
+                    leftText = stringResource(R.string.ratings),
+                    rightText = movie.rating?.toString()
+                )
+
+                LabelWithList(
+                    label = stringResource(R.string.production),
+                    items = movie.productionCompanies
+                )
+
+                TwoElementRow(leftText = stringResource(R.string.release_date), movie.releaseDate)
+
+                LabelWithList(
+                    label = stringResource(R.string.genres),
+                    items = movie.genres
+                )
             }
         }
 
