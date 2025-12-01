@@ -5,12 +5,13 @@ import com.example.interview_exercise_2coders.data.dto.MovieDetailsResponse
 import com.example.interview_exercise_2coders.data.dto.SearchMovieDto
 import com.example.interview_exercise_2coders.data.dto.SearchTvDto
 import com.example.interview_exercise_2coders.data.local.entity.CachedMovieEntity
+import com.example.interview_exercise_2coders.data.local.entity.FavoriteMovieEntity
 import com.example.interview_exercise_2coders.domain.MovieDetailsDomain
 import com.example.interview_exercise_2coders.domain.MovieDomain
 import com.example.interview_exercise_2coders.domain.SearchMovieDomain
 import com.example.interview_exercise_2coders.domain.SearchTvShowDomain
 
-
+//This can also be split into multiple files for cleaner code
 fun MovieDetailsResponse.toDomain(): MovieDetailsDomain {
     return MovieDetailsDomain(
         id = id,
@@ -102,15 +103,14 @@ fun CachedMovieEntity.toMovieDomain() = MovieDomain(
     voteAverage = voteAverage,
     releaseDate = releaseDate
 )
+
 fun CachedMovieEntity.toMovieDetailsDomain() = MovieDetailsDomain(
     id = id,
     title = title,
     overview = overview,
     posterUrl = posterUrl,
     backdropUrl = backdropUrl,
-    tagline = null,
     releaseDate = releaseDate,
-    runtime = null,
     rating = voteAverage,
     genres = emptyList(),
     productionCompanies = emptyList(),
@@ -118,7 +118,12 @@ fun CachedMovieEntity.toMovieDetailsDomain() = MovieDetailsDomain(
     spokenLanguages = emptyList()
 )
 
-
-
-
+fun MovieDomain.toFavoriteEntity(): FavoriteMovieEntity =
+    FavoriteMovieEntity(
+        id = this.id,
+        title = this.title,
+        overview = this.overview,
+        posterUrl = this.posterUrl,
+        releaseDate = this.releaseDate
+    )
 

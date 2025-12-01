@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -30,11 +31,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import com.example.interview_exercise_2coders.R
 import com.example.interview_exercise_2coders.data.mappers.toMovieDomain
 import com.example.interview_exercise_2coders.ui.helper.ImageHelper
 import com.example.interview_exercise_2coders.view_model.MovieDetailsState
@@ -69,7 +72,7 @@ fun MovieDetailsRoute(
             ) {
                 Row(
                     modifier = Modifier
-                        .fillMaxSize(), horizontalArrangement = Arrangement.SpaceBetween
+                        .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     movie.posterUrl?.let { url ->
                         val posterUrl = ImageHelper.getPosterUrl(url)
@@ -105,8 +108,14 @@ fun MovieDetailsRoute(
                 movie.tagline?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
                 Spacer(modifier = Modifier.height(8.dp))
                 movie.overview?.let { Text(it) }
-                movie.rating?.let { Text(it.toString()) }
-                movie.productionCompanies.forEach { Text(it.toString()) }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(stringResource(R.string.ratings))
+                    movie.rating?.let { Text(it.toString()) }
+                }
+                movie.productionCompanies.forEach { Text(it) }
             }
         }
 

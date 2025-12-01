@@ -21,6 +21,9 @@ serializationConverter = "1.0.0"
 room = "2.6.1"
 ksp = "1.9.25-1.0.20"
 paging = "3.3.6"
+mockk = "1.13.10"
+turbine = "1.0.0"
+ktx = "1.5.0"
 
 [libraries]
 # Core
@@ -30,6 +33,9 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+androidx-test-core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "ktx" }
 
 # Compose
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }

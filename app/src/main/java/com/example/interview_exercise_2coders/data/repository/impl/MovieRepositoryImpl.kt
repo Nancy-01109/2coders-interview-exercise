@@ -68,7 +68,6 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-
     override fun search(searchQuery: String, mediaType: MediaType): Flow<PagingData<SearchItem>> {
         return Pager(
             config = PagingConfig(

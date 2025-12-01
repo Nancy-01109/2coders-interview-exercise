@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.interview_exercise_2coders.data.local.entity.FavoriteMovieEntity
+import com.example.interview_exercise_2coders.data.mappers.toFavoriteEntity
 import com.example.interview_exercise_2coders.data.repository.FavoriteMovieRepository
 import com.example.interview_exercise_2coders.data.repository.MovieRepository
 import com.example.interview_exercise_2coders.domain.MediaType
@@ -91,21 +91,10 @@ class MoviesViewModel @Inject constructor(
             val isFav = favoriteIds.value.contains(movie.id)
             if (isFav) favoriteRepository.removeFavorite(movie.id)
             else favoriteRepository.addFavorite(
-                // Conversion happens here inside ViewModel
                 movie.toFavoriteEntity()
             )
         }
     }
-
-    private fun MovieDomain.toFavoriteEntity() =
-        FavoriteMovieEntity(
-            id = this.id,
-            title = this.title,
-            overview = this.overview,
-            posterUrl = this.posterUrl,
-            releaseDate = this.releaseDate
-        )
-
 }
 
 sealed class MovieDetailsState {

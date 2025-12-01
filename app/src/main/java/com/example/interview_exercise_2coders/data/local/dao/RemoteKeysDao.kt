@@ -8,17 +8,11 @@ import com.example.interview_exercise_2coders.data.local.entity.RemoteKeysEntity
 
 @Dao
 interface RemoteKeysDao {
-    @Query("SELECT * FROM remote_keys WHERE movieId = :id")
-    suspend fun remoteKeysByMovieId(id: Int): RemoteKeysEntity?
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(keys: List<RemoteKeysEntity>)
 
     @Query("DELETE FROM remote_keys")
     suspend fun clearRemoteKeys()
-
-    @Query("SELECT * FROM remote_keys WHERE movieId IN (:movieIds)")
-    suspend fun getRemoteKeysForMovies(movieIds: List<Int>): List<RemoteKeysEntity>
 
     @Query("SELECT * FROM remote_keys LIMIT 1")
     suspend fun getFirstRemoteKey(): RemoteKeysEntity?
